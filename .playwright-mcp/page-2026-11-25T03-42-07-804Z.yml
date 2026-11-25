@@ -1,0 +1,73 @@
+- generic [ref=f3e1]:
+  - complementary "메인 메뉴" [ref=f3e2]:
+    - link "Instagram" [ref=f3e3] [cursor=pointer]:
+      - /url: "#"
+    - navigation [ref=f3e4]:
+      - link "홈" [ref=f3e5] [cursor=pointer]:
+        - /url: "#"
+      - link "릴스" [ref=f3e8] [cursor=pointer]:
+        - /url: "#"
+      - link "메시지" [ref=f3e12] [cursor=pointer]:
+        - /url: dm.html
+      - link "검색" [ref=f3e16] [cursor=pointer]:
+        - /url: "#"
+      - link "알림" [ref=f3e20] [cursor=pointer]:
+        - /url: "#"
+      - link "만들기" [ref=f3e23] [cursor=pointer]:
+        - /url: "#"
+  - main [ref=f3e26]:
+    - generic [ref=f3e32]:
+      - generic [ref=f3e33]:
+        - heading "@kimsol_slamme" [level=1] [ref=f3e34]
+        - button "더 보기" [ref=f3e35] [cursor=pointer]
+      - paragraph [ref=f3e40]: 김솔
+      - list [ref=f3e41]:
+        - listitem [ref=f3e42]: 게시물 5
+        - listitem [ref=f3e43]: 팔로워 30만
+        - listitem [ref=f3e44]: 팔로잉 2
+    - generic [ref=f3e45]:
+      - button "프로필 편집" [ref=f3e46] [cursor=pointer]
+      - button "보관함 보기" [ref=f3e47] [cursor=pointer]
+    - navigation "프로필 탭" [ref=f3e48]:
+      - button "게시물" [ref=f3e49] [cursor=pointer]
+      - button "릴스" [ref=f3e60] [cursor=pointer]
+      - button "리포스트" [ref=f3e64] [cursor=pointer]
+      - button "태그됨" [ref=f3e68] [cursor=pointer]
+    - region "게시물 그리드" [ref=f3e73]:
+      - button "게시물 1 열기" [active] [ref=f3e74] [cursor=pointer]
+      - button "게시물 2 열기" [ref=f3e75] [cursor=pointer]
+      - button "게시물 3 열기" [ref=f3e76] [cursor=pointer]
+      - button "게시물 4 열기" [ref=f3e77] [cursor=pointer]
+      - button "게시물 5 열기" [ref=f3e78] [cursor=pointer]
+  - generic [ref=f3e79]:
+    - button "닫기" [ref=f3e81] [cursor=pointer]
+    - button "이전 게시물" [disabled] [ref=f3e84]
+    - dialog "게시물" [ref=f3e87]:
+      - generic [ref=f3e88]:
+        - generic [ref=f3e89]:
+          - generic [ref=f3e90]: 게시물 이미지 · 1080×1440
+          - generic [ref=f3e91]: 게시물 이미지 · 1080×1440
+          - generic [ref=f3e92]: 게시물 이미지 · 1080×1440
+        - button "다음 사진" [ref=f3e93] [cursor=pointer]
+        - button "태그된 사람 보기" [ref=f3e96] [cursor=pointer]
+      - complementary [ref=f3e105]:
+        - generic [ref=f3e106]:
+          - generic [ref=f3e108]: kimsol_slamme
+          - button "더 보기" [ref=f3e109] [cursor=pointer]
+        - generic [ref=f3e117]:
+          - generic [ref=f3e118]: kimsol_slamme
+          - generic [ref=f3e119]:
+            - generic [ref=f3e120]: 관리는 꾸준히
+            - text: "#일상 #private_care #model"
+        - generic [ref=f3e121]:
+          - button "좋아요" [ref=f3e122] [cursor=pointer]
+          - button "댓글" [ref=f3e125] [cursor=pointer]
+          - button "공유" [ref=f3e128] [cursor=pointer]
+        - generic [ref=f3e131]: jangphotogood 님 외 여러 명 이 좋아합니다.
+        - generic [ref=f3e132]: 2027년 6월 25일
+        - generic [ref=f3e133]:
+          - button "이모티콘" [ref=f3e134] [cursor=pointer]
+          - textbox "댓글 달기" [ref=f3e140]:
+            - /placeholder: 댓글 달기...
+          - button "게시" [ref=f3e141] [cursor=pointer]
+    - button "다음 게시물" [ref=f3e142] [cursor=pointer]

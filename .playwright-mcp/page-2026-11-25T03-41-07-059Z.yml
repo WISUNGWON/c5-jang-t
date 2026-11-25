@@ -1,0 +1,29 @@
+- generic [active] [ref=e1]:
+  - complementary "메인 메뉴" [ref=e2]:
+    - link "Instagram" [ref=e3] [cursor=pointer]:
+      - /url: index.html
+    - navigation [ref=e4]:
+      - link "홈" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+      - link "릴스" [ref=e8] [cursor=pointer]:
+        - /url: "#"
+      - link "메시지" [ref=e12] [cursor=pointer]:
+        - /url: dm.html
+      - link "검색" [ref=e16] [cursor=pointer]:
+        - /url: "#"
+      - link "알림" [ref=e20] [cursor=pointer]:
+        - /url: "#"
+      - link "만들기" [ref=e23] [cursor=pointer]:
+        - /url: "#"
+  - complementary "대화 목록" [ref=e26]:
+    - generic [ref=e27]:
+      - heading "kimsol_slamme" [level=1] [ref=e28]
+      - button "새 메시지" [ref=e29] [cursor=pointer]
+    - heading "메시지" [level=2] [ref=e34]
+    - list [ref=e35]:
+      - listitem [ref=e36]:
+        - button "안패션" [ref=e37] [cursor=pointer]
+  - main "내 메시지" [ref=e44]:
+    - heading "내 메시지" [level=2] [ref=e48]
+    - paragraph [ref=e49]: 친구나 그룹에 비공개 사진과 메시지를 보내보세요
+    - button "메시지 보내기" [ref=e50] [cursor=pointer]

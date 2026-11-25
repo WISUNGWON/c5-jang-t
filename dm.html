@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>메시지 · Instagram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="style.css?v=21" />
+</head>
+<body class="dm-body">
+  <aside class="side-nav" aria-label="메인 메뉴">
+    <a class="logo" href="index.html" aria-label="Instagram">
+      <img src="assets/instagram-logo.png" alt="" width="24" height="24" />
+    </a>
+
+    <nav class="nav-icons">
+      <a href="index.html" class="nav-item" aria-label="홈">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#" class="nav-item" aria-label="릴스">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M10 9v6l5-3-5-3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="dm.html" class="nav-item is-active" aria-label="메시지" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21.5 3 2.5 10.5l7 2.5 2.5 7L21.5 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="m9.5 13 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <a href="#" class="nav-item" aria-label="검색">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="m16.5 16.5 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <a href="#" class="nav-item" aria-label="알림">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 20s-7-4.35-7-10a4.5 4.5 0 0 1 7-3.72A4.5 4.5 0 0 1 19 10c0 5.65-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#" class="nav-item" aria-label="만들기">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </nav>
+  </aside>
+
+  <aside class="dm-list" aria-label="대화 목록">
+    <header class="dm-list-head">
+      <h1 class="dm-user">kimsol_slamme</h1>
+      <button class="dm-icon-btn" aria-label="새 메시지">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M16 3h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21 3 11 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M20 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <h2 class="dm-section-title">메시지</h2>
+
+    <ul class="dm-conversations">
+      <li>
+        <button class="dm-conv" type="button" id="conv-mina" data-conv="mina">
+          <span class="dm-avatar" aria-hidden="true">
+            <svg viewBox="0 0 56 56">
+              <circle cx="28" cy="28" r="28" fill="#dbdbdb"/>
+              <circle cx="28" cy="22" r="10" fill="#ffffff"/>
+              <path d="M8 52c0-11 9-18 20-18s20 7 20 18" fill="#ffffff"/>
+            </svg>
+          </span>
+          <span class="dm-conv-name">안패션</span>
+        </button>
+      </li>
+    </ul>
+  </aside>
+
+  <main class="dm-empty" id="dm-empty" aria-label="내 메시지">
+    <div class="dm-empty-ring" aria-hidden="true">
+      <svg viewBox="0 0 48 48">
+        <path d="M6 24 42 7 32 42l-6-14-20-4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2 class="dm-empty-title">내 메시지</h2>
+    <p class="dm-empty-sub">친구나 그룹에 비공개 사진과 메시지를 보내보세요</p>
+    <button class="dm-send-btn" type="button">메시지 보내기</button>
+  </main>
+
+  <!-- Chat conversation view (hidden until a conversation is picked) -->
+  <section class="chat" id="chat" hidden aria-label="안패션과의 대화">
+    <header class="chat-header">
+      <button class="chat-back" type="button" aria-label="목록으로">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="dm-avatar dm-avatar--md" aria-hidden="true">
+        <svg viewBox="0 0 44 44">
+          <circle cx="22" cy="22" r="22" fill="#dbdbdb"/>
+          <circle cx="22" cy="17" r="8" fill="#ffffff"/>
+          <path d="M6 40c0-9 7-14 16-14s16 5 16 14" fill="#ffffff"/>
+        </svg>
+      </span>
+      <div class="chat-peer">
+        <div class="chat-peer-name">안패션</div>
+        <div class="chat-peer-handle">im_no_fashion</div>
+      </div>
+      <div class="chat-actions">
+        <button class="dm-icon-btn" aria-label="음성 통화">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="dm-icon-btn" aria-label="영상 통화">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="7" width="13" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <path d="m16 10 5-3v10l-5-3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="dm-icon-btn" aria-label="대화 정보">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="8" r="1" fill="currentColor"/>
+            <path d="M12 11v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="chat-body">
+      <div class="chat-date">2027년 3월 14일 오후 9:25</div>
+
+      <div class="msg msg--out"><span class="bubble">만들어주세요, 우리 쪼꼬 입을 강아지 옷. 이 원피스랑 커플룩으로, 생일 파티 때!!</span></div>
+      <div class="msg msg--out"><span class="msg-image msg-image--dress" aria-label="원피스 참고 이미지"></span></div>
+
+      <div class="msg msg--in"><span class="bubble">지금은 다른 작업으로 좀 바쁜데요..ㅠ 언제까지 드리면 될까요?</span></div>
+
+      <div class="msg msg--out">
+        <span class="bubble">가능하시져? 낼까지.<span class="msg-reaction" aria-label="하트 반응">❤️</span></span>
+      </div>
+
+      <div class="chat-date">2027년 3월 15일 오전 10:30</div>
+
+      <div class="msg msg--in"><span class="bubble">다 만들었어요. 회사에서 드릴게요.</span></div>
+      <div class="msg msg--in"><span class="msg-image msg-image--atelier" aria-label="제작된 옷 이미지"></span></div>
+    </div>
+
+    <form class="chat-input" onsubmit="return false">
+      <button type="button" class="chat-input-btn" aria-label="이모티콘">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="9" cy="10.5" r="1.1" fill="currentColor"/>
+          <circle cx="15" cy="10.5" r="1.1" fill="currentColor"/>
+          <path d="M8.5 15c1 1.2 2.1 1.8 3.5 1.8s2.5-.6 3.5-1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <input type="text" placeholder="메시지 입력..." aria-label="메시지 입력" />
+      <button type="button" class="chat-input-btn" aria-label="음성 메시지">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="9" y="3" width="6" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M5 11a7 7 0 0 0 14 0M12 18v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button type="button" class="chat-input-btn" aria-label="사진 보내기">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="8" cy="10" r="1.6" fill="currentColor"/>
+          <path d="m4 18 5-6 4 4 3-3 4 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button type="button" class="chat-input-btn" aria-label="좋아요 보내기">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.35-7-10a4.5 4.5 0 0 1 7-3.72A4.5 4.5 0 0 1 19 10c0 5.65-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </button>
+    </form>
+  </section>
+
+  <script>
+    (function () {
+      const conv = document.getElementById('conv-mina');
+      const empty = document.getElementById('dm-empty');
+      const chat = document.getElementById('chat');
+      const back = chat.querySelector('.chat-back');
+
+      function openChat() {
+        conv.classList.add('is-selected');
+        empty.hidden = true;
+        chat.hidden = false;
+        document.body.classList.add('chat-open');
+      }
+      function closeChat() {
+        conv.classList.remove('is-selected');
+        empty.hidden = false;
+        chat.hidden = true;
+        document.body.classList.remove('chat-open');
+      }
+
+      conv.addEventListener('click', openChat);
+      back.addEventListener('click', closeChat);
+    })();
+  </script>
+</body>
+</html>
