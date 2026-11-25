@@ -1,61 +1,50 @@
 // --- Posts data ---
-// Order: newest first (pinned) → oldest last. Colors mirror the Figma grid tiles.
+// Six tiles in reading order (top-left → bottom-right). The first slot is
+// intentionally blank to match the Figma frame.
 const posts = [
   {
-    pinned: true,
-    caption: "관리는 꾸준히",
-    hashtags: ["#일상", "#private_care", "#model"],
+    caption: "SOL",
+    comments: [
+      { user: "solo_baam", text: "?? 진짜 김솔?" },
+      { user: "tnwl_090", text: "김솔의 재발견 ㄷㄷ" },
+      { user: "alswn._", text: "김솔.. 모델 인정!!" },
+    ],
+    likesCount: "100.3만",
+    commentsCount: "130",
+    sharesCount: "160",
+    likedBy: "kimsol_slamme",
+    date: "2027년 1월 2일",
+    photos: [{ bg: "#ffffff", hidePlaceholder: true }],
+  },
+  {
+    hashtags: ["#플로럴", "#원피스", "#데일리룩"],
     likedBy: "jangphotogood",
-    date: "2027년 6월 25일",
-    photos: [
-      { bg: "#c9d3e3", size: "1080×1440" },
-      { bg: "#b5c0d4", size: "1080×1440" },
-      { bg: "#9fadc2", size: "1080×1440" },
-    ],
+    date: "2027년 6월 20일",
+    photos: [{ bg: "#efe7f2", hidePlaceholder: true }],
   },
   {
-    hashtags: ["#따뜻한하루", "#카페", "#데일리"],
-    likedBy: "cafelover_",
-    date: "2027년 1월 28일",
-    photos: [
-      { bg: "#e6d5c3", size: "1080×1440" },
-      { bg: "#d8c3a9", size: "1080×1440" },
-      { bg: "#c9b393", size: "1080×1440" },
-    ],
-  },
-  {
-    hashtags: ["#산책", "#자연", "#초록"],
-    likedBy: "greenwalk",
-    date: "2027년 1월 20일",
-    photos: [
-      { bg: "#b9cbbf", size: "1080×1440" },
-      { bg: "#a5bdb0", size: "1080×1440" },
-      { bg: "#91ab9b", size: "1080×1440" },
-    ],
-  },
-  {
-    caption: "거울 셀카❤",
-    hashtags: ["#관리하는모델", "#relax"],
+    hashtags: ["#블랙미니", "#슬립드레스", "#파티룩"],
     likedBy: "jangphotogood",
-    date: "2027년 6월 5일",
-    photos: [
-      { bg: "#a9b7cc", size: "1080×1440" },
-      { bg: "#8e9db3", size: "1080×1440" },
-    ],
+    date: "2027년 6월 10일",
+    photos: [{ bg: "#b9cbbf", hidePlaceholder: true }],
   },
   {
-    hashtags: [
-      "#슬램므", "#밀라노패션위크", "#사랑하는_직원들이랑♥",
-      "#퍼컬렉션", "#모피사랑", "#모피는", "#slamme",
-    ],
-    tagged: ["@legendary_celeb_", "@design_1zzang", "@hottt_model", "@kangstar00700"],
+    hashtags: ["#레더", "#투피스", "#스튜디오"],
     likedBy: "jangphotogood",
-    date: "2027년 2월 1일",
-    photos: [
-      { bg: "#e3dccb", size: "1080×1440" },
-      { bg: "#d1c7af", size: "1080×1440" },
-      { bg: "#baa88e", size: "1080×1440" },
-    ],
+    date: "2027년 5월 28일",
+    photos: [{ bg: "#dbdbdb", hidePlaceholder: true }],
+  },
+  {
+    hashtags: ["#시퀸스커트", "#스트릿", "#패션위크"],
+    likedBy: "jangphotogood",
+    date: "2027년 5월 12일",
+    photos: [{ bg: "#e6d5c3", hidePlaceholder: true }],
+  },
+  {
+    hashtags: ["#블랙드레스", "#미니멀", "#쇼룸"],
+    likedBy: "jangphotogood",
+    date: "2027년 4월 30일",
+    photos: [{ bg: "#a9b7cc", hidePlaceholder: true }],
   },
 ];
 
@@ -72,6 +61,10 @@ const captionText = document.getElementById("caption-text");
 const likesEl = document.getElementById("likes");
 const dateEl = document.getElementById("date");
 const tagBubbles = document.getElementById("tag-bubbles");
+const commentsEl = document.getElementById("comments");
+const countLikes = document.getElementById("count-likes");
+const countComments = document.getElementById("count-comments");
+const countShares = document.getElementById("count-shares");
 
 // --- Markup helpers ---
 
@@ -86,18 +79,19 @@ function placeholderSVG() {
 
 // --- Render grid ---
 posts.forEach((post, i) => {
+  const first = post.photos[0];
+
   const tile = document.createElement("button");
   tile.className = "tile";
   tile.setAttribute("aria-label", `게시물 ${i + 1} 열기`);
-  tile.style.background = post.photos[0].bg;
+  tile.style.background = first.bg;
+  if (first.img) {
+    tile.style.backgroundImage = `url("${first.img}")`;
+    tile.style.backgroundSize = "cover";
+    tile.style.backgroundPosition = "center";
+  }
   tile.dataset.index = String(i);
 
-  if (post.pinned) {
-    tile.insertAdjacentHTML(
-      "beforeend",
-      `<span class="pin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 3 9 10l-4 1 4 4-5 5 1 1 5-5 4 4 1-4 7-7-6-6Z" fill="currentColor"/></svg></span>`,
-    );
-  }
   if (post.photos.length > 1) {
     tile.insertAdjacentHTML(
       "beforeend",
@@ -131,17 +125,24 @@ function closeModal() {
 function renderModal() {
   const post = posts[currentPost];
 
-  // Slides — each slide uses the Figma placeholder style.
+  // Slides — real image, blank, or Figma placeholder.
   mediaTrack.innerHTML = post.photos
-    .map(
-      (p) => `
+    .map((p) => {
+      if (p.img) {
+        return `
+      <div class="slide" style="background:${p.bg};background-image:url('${p.img}');background-size:cover;background-position:center"></div>`;
+      }
+      if (p.hidePlaceholder) {
+        return `<div class="slide" style="background:${p.bg}"></div>`;
+      }
+      return `
       <div class="slide" style="background:${p.bg}">
         <div class="slide-placeholder">
           ${placeholderSVG()}
           <span>게시물 이미지 · ${p.size}</span>
         </div>
-      </div>`,
-    )
+      </div>`;
+    })
     .join("");
 
   // Dots
@@ -175,14 +176,31 @@ function renderModal() {
     tagBubbles.hidden = true;
   }
 
-  // Caption: optional body text, then hashtags rendered in blue
+  // Caption: username + optional caption + hashtags, all inline on one row.
   const hashtags = (post.hashtags || [])
     .map((tag) => `<span class="hashtag">${tag}</span>`)
     .join(" ");
-  const body = post.caption ? `<div class="caption-body">${post.caption}</div>` : "";
-  captionText.innerHTML = body + hashtags;
+  const body = post.caption ? ` <span class="caption-body">${post.caption}</span>` : "";
+  const sep = hashtags ? " " : "";
+  captionText.innerHTML = `<b class="caption-user">jangphotogood</b>${body}${sep}${hashtags}`;
 
-  // Likes line: "jangphotogood 님 외 여러 명 이 좋아합니다."
+  // Comments (shown under the caption, same visual treatment as Figma)
+  commentsEl.innerHTML = (post.comments || [])
+    .map(
+      (c) => `
+      <li class="comment">
+        <div class="avatar avatar--sm" aria-hidden="true"></div>
+        <div class="comment-text"><b>${c.user}</b> ${c.text}</div>
+      </li>`,
+    )
+    .join("");
+
+  // Action counts
+  countLikes.textContent = post.likesCount || "";
+  countComments.textContent = post.commentsCount || "";
+  countShares.textContent = post.sharesCount || "";
+
+  // Likes line: "kimsol_slamme 님 외 여러 명 이 좋아합니다."
   likesEl.innerHTML = `<b>${post.likedBy}</b> 님 외 <b>여러 명</b> 이 좋아합니다.`;
 
   // Date

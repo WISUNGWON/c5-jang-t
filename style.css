@@ -213,11 +213,10 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 .tab {
+  position: relative;
   flex: 1;
   background: none;
   border: 0;
-  border-top: 1px solid transparent;
-  margin-top: -1px;
   height: 52px;
   padding: 0;
   cursor: pointer;
@@ -227,7 +226,18 @@ ul { list-style: none; padding: 0; margin: 0; }
   justify-content: center;
 }
 .tab svg { width: 24px; height: 24px; display: block; }
-.tab.is-active { color: #000; border-top-color: #000; }
+.tab.is-active { color: #000; }
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 2px;
+  background: #000;
+  display: none;
+}
+.tab.is-active .tab-indicator { display: block; }
 
 /* ---------- Grid (788 wide, 3×260 portrait tiles) ---------- */
 
@@ -255,6 +265,8 @@ ul { list-style: none; padding: 0; margin: 0; }
   inset: 0;
   background: rgba(0,0,0,.08);
 }
+.tile--empty { cursor: default; }
+.tile--empty:hover::after { content: none; }
 .tile .pin, .tile .multi {
   position: absolute;
   top: 10px;
@@ -526,15 +538,8 @@ ul { list-style: none; padding: 0; margin: 0; }
   line-height: 1.5;
 }
 .caption-text { flex: 1; min-width: 0; }
-.caption-user {
-  font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-.caption-body {
-  color: #000;
-  margin-bottom: 4px;
-}
+.caption-user { font-weight: 700; }
+.caption-body { color: #000; }
 .hashtag {
   color: var(--hashtag);
   white-space: nowrap;
@@ -542,22 +547,52 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 .hashtag + .hashtag { margin-left: 6px; }
 
+.comments {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.comment {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 16px;
+  line-height: 24px;
+}
+.comment .avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.comment-text b { font-weight: 700; margin-right: 4px; }
+
 .side-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 8px 0;
+  gap: 16px;
+  padding: 12px 16px 0;
   border-top: 1px solid var(--soft-border);
 }
-.side-actions button {
+.action-btn {
   background: none;
   border: 0;
-  padding: 8px;
+  padding: 0;
   cursor: pointer;
   color: #000;
   display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font: inherit;
 }
-.side-actions button svg { width: 24px; height: 24px; }
+.action-btn svg { width: 24px; height: 24px; }
+.action-count {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
 
 .likes {
   padding: 2px 16px;
