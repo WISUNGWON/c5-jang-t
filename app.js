@@ -99,7 +99,13 @@ posts.forEach((post, i) => {
     );
   }
 
-  tile.addEventListener("click", () => openModal(i));
+  if (i === 0) {
+    tile.addEventListener("click", () => openModal(i));
+  } else {
+    tile.disabled = true;
+    tile.setAttribute("aria-disabled", "true");
+    tile.tabIndex = -1;
+  }
   grid.appendChild(tile);
 });
 
@@ -161,9 +167,9 @@ function renderModal() {
 
   mediaTrack.style.transform = `translateX(-${currentPhoto * 100}%)`;
 
-  // Outer post arrows
-  prevPostBtn.disabled = currentPost === 0;
-  nextPostBtn.disabled = currentPost === posts.length - 1;
+  // Outer post arrows — only the first post is clickable, so hide both.
+  prevPostBtn.disabled = true;
+  nextPostBtn.disabled = true;
 
   // Tag bubbles (only on the first photo, like Instagram)
   if (post.tagged && post.tagged.length && currentPhoto === 0) {
