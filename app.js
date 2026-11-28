@@ -4,6 +4,7 @@
 const posts = [
   {
     caption: "SOL",
+    pinned: true,
     comments: [
       { user: "solo_baam", text: "?? 진짜 김솔?" },
       { user: "tnwl_090", text: "김솔의 재발견 ㄷㄷ" },
@@ -14,7 +15,7 @@ const posts = [
     sharesCount: "160",
     likedBy: "kimsol_slamme",
     date: "2027년 1월 2일",
-    photos: [{ bg: "#ffffff", hidePlaceholder: true }],
+    photos: [{ bg: "#e8c4b8", hidePlaceholder: true }],
   },
   {
     hashtags: ["#플로럴", "#원피스", "#데일리룩"],
@@ -96,6 +97,13 @@ posts.forEach((post, i) => {
     tile.insertAdjacentHTML(
       "beforeend",
       `<span class="multi" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="7" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>`,
+    );
+  }
+
+  if (post.pinned) {
+    tile.insertAdjacentHTML(
+      "beforeend",
+      `<span class="pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><g transform="rotate(-45 12 12)"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></g></svg></span>`,
     );
   }
 
